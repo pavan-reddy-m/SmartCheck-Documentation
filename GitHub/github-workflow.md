@@ -316,10 +316,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -399,3 +399,151 @@ Recommended security practices:
   https://docs.github.com/en/actions/tutorials/create-an-example-workflow
 - Secure Use Reference:
   https://docs.github.com/en/actions/reference/security/secure-use
+
+
+
+## 11. Practical Implementation: Python CI Pipeline Using GitHub Actions
+
+### 11.1 Objective
+
+The objective of this practical implementation is to demonstrate how GitHub Actions automates the testing of a Python application whenever code is pushed to the GitHub repository or a pull request is created.
+
+### 11.2 Project Structure
+
+```text
+SmartCheck-DevOps-Documentation/
+├── .github/
+│   └── workflows/
+│       └── python-ci.yml
+└── Practical-GitHub-Actions/
+    ├── app.py
+    ├── requirements.txt
+    └── tests/
+        └── test_app.py
+```
+
+### 11.3 Sample Python Application
+
+The application implements four basic mathematical operations:
+
+- Addition
+- Subtraction
+- Multiplication
+- Division
+
+It also handles division-by-zero errors.
+
+### 11.4 Automated Test Cases
+
+Pytest is used to validate the application.
+
+The following test cases are implemented:
+
+1. Addition test
+2. Subtraction test
+3. Multiplication test
+4. Division test
+5. Division-by-zero exception test
+
+### 11.5 GitHub Actions Workflow Configuration
+
+Workflow file:
+
+`.github/workflows/python-ci.yml`
+
+The workflow performs the following operations:
+
+1. Trigger the pipeline on pushes to the `main` branch and pull requests targeting `main`.
+2. Start an Ubuntu GitHub-hosted runner.
+3. Check out the repository source code.
+4. Set up Python 3.12.
+5. Install the required Python dependencies.
+6. Execute automated tests using Pytest.
+
+### 11.6 CI Pipeline Execution Flow
+
+```text
+Developer
+    |
+    v
+Push Code to GitHub
+    |
+    v
+GitHub Actions Trigger
+    |
+    v
+Ubuntu Hosted Runner
+    |
+    v
+Checkout Source Code
+    |
+    v
+Set Up Python 3.12
+    |
+    v
+Install Dependencies
+    |
+    v
+Execute Pytest
+    |
+    v
+Test Results
+    |
+    v
+Pipeline Success / Failure
+```
+
+### 11.7 Practical Execution Results
+
+The workflow was successfully executed on GitHub Actions.
+
+| Parameter | Execution Result |
+|---|---|
+| Workflow | Python CI Pipeline |
+| Branch | main |
+| Trigger | Push |
+| Runner OS | Ubuntu 26.04 |
+| Runner Provider | Azure |
+| Python Version | 3.12.16 |
+| Testing Framework | Pytest 8.3.5 |
+| Total Test Cases | 5 |
+| Passed Tests | 5 |
+| Failed Tests | 0 |
+| Pipeline Status | Success |
+
+**Test execution result:**
+
+```text
+test_addition PASSED
+test_subtraction PASSED
+test_multiplication PASSED
+test_division PASSED
+test_division_by_zero PASSED
+
+5 passed in 0.01s
+```
+
+### 11.8 GitHub Actions Execution
+
+The workflow execution can be reviewed through the GitHub Actions interface.
+
+Repository:
+
+https://github.com/pavan-reddy-m/SmartCheck-Documentation
+
+Successful workflow execution:
+
+https://github.com/pavan-reddy-m/SmartCheck-Documentation/actions/runs/45113074880
+
+### 11.9 Benefits of the Practical Implementation
+
+- Automated testing whenever code changes are pushed.
+- Early identification of application defects.
+- Consistent test execution in a cloud-hosted environment.
+- Reduced manual testing effort.
+- Improved code quality and development reliability.
+- Foundation for extending the pipeline with code quality, security scanning, Docker builds, and deployment stages.
+
+### 11.10 Conclusion
+
+This implementation demonstrates how GitHub Actions can automate Python application testing through a CI pipeline. All five test cases passed successfully, confirming that the workflow is configured and functioning correctly.
